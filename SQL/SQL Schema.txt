@@ -1,0 +1,235 @@
+----------------------------------MYSQL DB FOR PROJECT-------------------------
+
+
+
+
+mysql> use impproject
+Database changed
+mysql> show tables;
+
++-------------------------+
+| Tables_in_impproject    |
++-------------------------+
+| admin                   |
+| customer                |
+| customer_apply_policies |
+| hibernate_sequence      |
+| policys                 |
+| questions_customer      |
+| unknown_sms             |
++-------------------------+
+7 rows in set (0.02 sec)
+
+
+
+-----------ADMIN TABLE-------
+
+mysql> desc admin;
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| adminid           | bigint       | NO   | PRI | NULL    |       |
+| admin_join_date   | varchar(255) | YES  |     | NULL    |       |
+| adminaddress      | varchar(255) | YES  |     | NULL    |       |
+| adminage          | varchar(255) | YES  |     | NULL    |       |
+| adminemail        | varchar(255) | NO   | UNI | NULL    |       |
+| admingender       | varchar(255) | YES  |     | NULL    |       |
+| adminname         | varchar(255) | NO   |     | NULL    |       |
+| adminpassword     | varchar(255) | YES  |     | NULL    |       |
+| adminphno         | varchar(255) | YES  |     | NULL    |       |
+| seniormangeremail | varchar(255) | YES  |     | NULL    |       |
++-------------------+--------------+------+-----+---------+-------+
+10 rows in set (0.01 sec)
+
+mysql>
+
+ select * from admin;
+
+
++---------+------------------+------------------------------------------------------+----------+------------------------+-------------+------------------+---------------+------------+-------------------+
+| adminid | admin_join_date  | adminaddress                                         | adminage | adminemail             | admingender | adminname        | adminpassword | adminphno  | seniormangeremail |
++---------+------------------+------------------------------------------------------+----------+------------------------+-------------+------------------+---------------+------------+-------------------+
+|     101 | 12/22/23         | Kolkata                                              | 40       | sonut@gmail.com        | Male        | Sonu Samanta     | Subha@11      | 7031434638 | NULL              |
+|     102 | 12-02-2022       | Kolkata                                              | 26       | admin@gmail.com        | Female      | Titli Maity      | 123456        | 859632806  | sonut@gmail.com   |
+|     141 | 2022/06/12 20:29 | Panskura                                             | 23       | noor@gmail.com         | MALE        | Sk NOOR ISHLAM   | 123456        | 7800440156 | admin@gmail.com   |
+|     166 | 2022/06/13 21:22 | village-boliswar,post-dehati,ps-panskura,West Bengal | 23       | subhadips024@gmail.com | MALE        | SUBHADIP SAMANTA | Subha@112     | 7031434638 | sonut@gmail.com   |
++---------+------------------+------------------------------------------------------+----------+------------------------+-------------+------------------+---------------+------------+-------------------+
+4 rows in set (0.01 sec)
+
+
+--------------Customer-----------------
+
+
+mysql> desc customer;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| cid       | bigint       | NO   | PRI | NULL    |       |
+| caddress  | varchar(255) | YES  |     | NULL    |       |
+| cage      | varchar(255) | YES  |     | NULL    |       |
+| cemail    | varchar(255) | NO   | UNI | NULL    |       |
+| cgender   | varchar(255) | YES  |     | NULL    |       |
+| cname     | varchar(255) | YES  |     | NULL    |       |
+| cpassword | varchar(255) | YES  |     | NULL    |       |
+| cphno     | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+
+select * from Customer
+    -> ;
++-----+------------------------------------------------------+------+-----------------------------+---------+---------------------+-----------+------------+
+| cid | caddress                                             | cage | cemail                      | cgender | cname               | cpassword | cphno      |
++-----+------------------------------------------------------+------+-----------------------------+---------+---------------------+-----------+------------+
+|  74 | village-boliswar,post-dehati,ps-panskura,West Bengal | 23   | subhadips024@gmail.com      | MALE    | SUBHADIP SAMANTA    | Subha@11  | 7031434638 |
+|  98 | Nowapara, Panskura, WB                               | 23   | sknooralam920786@google.com | MALE    | SK NOORALAM RAHAMAN | 920786    | 7908585122 |
+| 152 | Mumbai                                               | 32   | cd@gmail.com                | MALE    | Bijoy Kumar         | Subha@11  | 7556652220 |
+| 160 | Bihar                                                | 23   | sumi@gmail.com              | Female  | Sumi Sinha          | 789456    | 808545676  |
+| 168 | Kolkata                                              | 23   | x@gmail.com                 | MALE    | Subha               | subha     | 7031434638 |
+| 176 | Bihar                                                | 23   | s@gmail.com                 | Female  | SUMI                | 123456    | 7894561230 |
++-----+------------------------------------------------------+------+-----------------------------+---------+---------------------+-----------+------------+
+6 rows in set (0.00 sec)
+
+mysql>
+
+
+------------------------------Customer-Apply Policies----------------
+
+
+
+desc customer_apply_policies;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| appid           | bigint       | NO   | PRI | NULL    |       |
+| customeremail   | varchar(255) | NO   |     | NULL    |       |
+| customername    | varchar(255) | NO   |     | NULL    |       |
+| policy_catagory | varchar(255) | NO   |     | NULL    |       |
+| policy_name     | varchar(255) | YES  |     | NULL    |       |
+| policy_price    | varchar(255) | YES  |     | NULL    |       |
+| policyapplydate | varchar(255) | YES  |     | NULL    |       |
+| status          | varchar(255) | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+8 rows in set (0.01 sec)
+
+
+mysql> select * from customer_apply_policies;
++-------+-----------------+--------------+------------------+----------------------------------------------------+--------------+------------------+----------+
+| appid | customeremail   | customername | policy_catagory  | policy_name                                        | policy_price | policyapplydate  | status   |
++-------+-----------------+--------------+------------------+----------------------------------------------------+--------------+------------------+----------+
+|   151 | subha@gmail.com | ANUP MAITY   | travel Insurance | RED TRAK 4 YEAR FAMILY INSURENCE  Start with ON 5L | 5 lac        | 2022/06/12 21:56 | Approved |
+|   162 | sumi@gmail.com  | Sumi Sinha   | travel Insurance | Make Tripe Safely Without Hesitation  ???          | 5 lac        | 2022/06/13 21:03 | Approved |
+|   163 | sumi@gmail.com  | Sumi Sinha   | travel Insurance | TATA MOTORE INSURENCE FOR 5 Years                  | 3 lac        | 2022/06/13 21:04 | Approved |
+|   169 | x@gmail.com     | Subha        | travel Insurance | Make Tripe Safely Without Hesitation  ???          | 5 lac        | 2022/06/14 08:12 | Approved |
+|   171 | x@gmail.com     | Subha        | travel Insurance | TATA MOTORE INSURENCE FOR 5 Years                  | 10 lac       | 2022/06/14 08:22 | Pending  |
++-------+-----------------+--------------+------------------+----------------------------------------------------+--------------+------------------+----------+
+5 rows in set (0.01 sec)
+
+
+
+
+----------------Policys------------------
+
+
+mysql> desc  policys;
++--------------------+--------------+------+-----+---------+-------+
+| Field              | Type         | Null | Key | Default | Extra |
++--------------------+--------------+------+-----+---------+-------+
+| pid                | bigint       | NO   | PRI | NULL    |       |
+| add_date_of_policy | varchar(255) | YES  |     | NULL    |       |
+| policycatagory     | varchar(255) | NO   |     | NULL    |       |
+| policyname         | varchar(255) | NO   |     | NULL    |       |
++--------------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+
+mysql> select * from policys;
++-----+--------------------+------------------+-------------------------------------------+
+| pid | add_date_of_policy | policycatagory   | policyname                                |
++-----+--------------------+------------------+-------------------------------------------+
+|  91 | 2022/06/12 11:02   | travel Insurance | TATA MOTORE INSURENCE FOR 5 Years         |
+| 103 | 2022/06/12 11:17   | travel Insurance | Make Tripe Safely Without Hesitation  ??? |
+| 117 | 2022/06/14 07:59   | Life Insurance   | RED TRAK 4 YEAR FAMILY INSURENCE          |
++-----+--------------------+------------------+-------------------------------------------+
+3 rows in set (0.01 sec)
+
+
+
+
+
+
+
+
+
+
+
+================Questions_customer==============
+
+mysql> desc questions_customer;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| qid           | bigint       | NO   | PRI | NULL    |       |
+| answerdate    | varchar(255) | YES  |     | NULL    |       |
+| qanswer       | varchar(255) | YES  |     | NULL    |       |
+| qdate         | varchar(255) | YES  |     | NULL    |       |
+| qdetails      | varchar(255) | NO   |     | NULL    |       |
+| qtopic        | varchar(255) | NO   |     | NULL    |       |
+| customeremail | varchar(255) | NO   |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+
+mysql> select * from questions_customer;
+
++-----+------------------+---------------------------------------------------------+------------------+-----------------------------------------------------------+----------------------------+-----------------------------+
+| qid | answerdate       | qanswer                                                 | qdate            | qdetails                                                  | qtopic                     | customeremail               |
++-----+------------------+---------------------------------------------------------+------------------+-----------------------------------------------------------+----------------------------+-----------------------------+
+|   7 | 2022/06/08 09:13 | wAIT 2DAYS WE WILL CALL YOU..THANK YOU                  | 2022/06/07 23:24 | I have done my insurence before date but it not ,Approved | Pending approval           |                             |
+|   8 | 2022/06/11 17:56 | Just wait for 5 dayss     ...........                   | 2022/06/07 23:26 | :This month deduct mony 500 extra ,Do something           | Money deducted             |                             |
+|  11 | 2022/06/11 18:23 | Hey                                                     | 2022/06/08 09:25 | :This month deduct mony 500 extra ,Do something           | Money deducted             | subhadips024@gmail.com      |
+|  26 | 2022/06/11 18:39 | OK FINE WE WILL Contact with you soon                   | 2022/06/10 12:08 | Is Women Policy thee?                                     | Women Policy               | subhadips024@gmail.com      |
+|  27 | 2022/06/11 18:29 | Wiat                                                    | 2022/06/10 12:11 | Is available? House Policy>>/?                            | House Insurance            | subhadips024@gmail.com      |
+|  54 | 2022/06/11 18:47 | Ok Fine:????                                            | 2022/06/10 16:07 | Need Insurence for two House                              | Need more Backup for House | subhadips024@gmail.com      |
+|  55 | 2022/06/12 11:33 | ok wait                                                 | 2022/06/10 16:12 | My all balance got deducted..but Why ?                    | Balance deducted           | subhadips024@gmail.com      |
+|  58 | 2022/06/12 11:47 | Sorry                                                   | 2022/06/11 10:03 | Testcase                                                  | Hey                        | subhadips024@gmail.com      |
+|  59 | 2022/06/12 02:28 | bal er msg                                              | 2022/06/11 10:04 | Mail for test                                             | Test                       | subhadips024@gmail.com      |
+|  64 | 2022/06/12 11:55 | Let me Talk with Backend!???                            | 2022/06/11 10:59 | nkadn                                                     | kdajk                      | subhadips024@gmail.com      |
+|  78 | 2022/06/12 20:26 | Ok Fine...                                              | 2022/06/11 16:28 | Is available? House Policy>>/?                            | Women Policy               | 7800440156                  |
+|  80 | 2022/06/14 08:00 | Sorry We not get                                        | 2022/06/11 16:30 | Need Insurence for two House                              | Balance deducted           | 7800440156                  |
+|  81 | 2022/06/12 11:51 | Wait until we don't conect                              | 2022/06/11 16:30 | My all balance got deducted..but Why ?                    | jmavken                    | 7800440156                  |
+|  85 | 2022/06/12 11:54 | ?????????We are Busy just Wait!?????                    | 2022/06/11 17:30 | taka asche na kaka                                        | Taka de Bhai               | kb@g.com                    |
+| 100 | 2022/06/12 02:27 | Aste ladies kole bachha.                                | 2022/06/12 02:23 | Please release some latest insurance for long term.       | Want new Insurance         | sknooralam920786@google.com |
+| 137 | 2022/06/14 08:00 | Sure We will Contact through Call!! Just Wait for 24 hr | 2022/06/12 20:21 | I need Help                                               | Hi                         | subhadips024@gmail.com      |
+| 138 | NULL             | NULL                                                    | 2022/06/12 20:24 | Is available? House Policy>>/?                            | jmavken                    | subhadips024@gmail.com      |
+| 139 | NULL             | NULL                                                    | 2022/06/12 20:25 | Join me in Group                                          | SUbhadip Problem           | subhadips024@gmail.com      |
+| 148 | 2022/06/13 21:20 | Yes ,It is there                                        | 2022/06/12 21:54 | Is Women Policy thee?                                     | Women Policy               | subha@gmail.com             |
+| 161 | 2022/06/13 21:19 |                                                         | 2022/06/13 21:01 | Is Women Policy thee?                                     | Women Policy               | sumi@gmail.com              |
+| 170 | NULL             | NULL                                                    | 2022/06/14 08:13 | Can you please approve my request asap ?                  | Want Fast Approval         | x@gmail.com                 |
++-----+------------------+---------------------------------------------------------+------------------+-----------------------------------------------------------+----------------------------+-----------------------------+
+21 rows in set (0.01 sec)
+
+
+
+-----------------------------------Unknown_sms---------------------------
+
+mysql> select * from unknown_sms;
+
+mysql> desc unknown_sms;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| usmsid        | bigint       | NO   | PRI | NULL    |       |
+| sms           | varchar(255) | YES  |     | NULL    |       |
+| ucustomername | varchar(255) | YES  |     | NULL    |       |
+| usmsemail     | varchar(255) | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+
++--------+----------------------------------------------------+------------------+-----------------+
+| usmsid | sms                                                | ucustomername    | usmsemail       |
++--------+----------------------------------------------------+------------------+-----------------+
+|     10 | Yes we want this service ,Please contract with me  | Subhadip Samanta | subha@gmail.com |
+|     12 | Yes we want this service ,Please contract with me  | Subhadip Samanta | subha@gmail.com |
++--------+----------------------------------------------------+------------------+-----------------+
